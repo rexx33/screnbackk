@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condivisione Schermo in Tempo Reale</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Condivisione Schermo in Tempo Reale</h1>
+        
+        <div class="section" id="createRoomSection">
+            <h2>Crea una nuova stanza di streaming</h2>
+            <p>Clicca qui sotto per creare una nuova stanza e iniziare a condividere il tuo schermo:</p>
+            <button id="createRoomBtn" class="btn">Crea Stanza</button>
+        </div>
+        
+        <div class="section hidden" id="hostSection">
+            <h2>Stanza Creata</h2>
+            <p>Condividi questo ID stanza con chi vuoi che si colleghi al tuo streaming:</p>
+            <div id="roomIdDisplay"></div>
+            <button id="copyRoomIdBtn" class="btn">Copia ID Stanza</button>
+            <button id="startSharingBtn" class="btn" disabled>Inizia a Condividere Schermo</button>
+            <button id="stopSharingBtn" class="btn hidden">Interrompi Condivisione</button>
+            <div id="connectionCount">Utenti collegati: 0</div>
+        </div>
+        
+        <div class="section" id="joinRoomSection">
+            <h2>Unisciti ad una stanza esistente</h2>
+            <p>Inserisci l'ID della stanza a cui vuoi unirti:</p>
+            <input type="text" id="roomIdInput" placeholder="ID Stanza" style="padding: 10px; width: 60%; margin-right: 10px;">
+            <button id="joinRoomBtn" class="btn">Unisciti</button>
+        </div>
+        
+        <div class="video-container">
+            <video id="screenVideo" autoplay playsinline></video>
+        </div>
+        
+        <div id="status" class="info hidden"></div>
+        
+        <div class="instructions">
+            <h3>Come utilizzare questa applicazione:</h3>
+            <ol>
+                <li>Per condividere il tuo schermo, clicca su "Crea Stanza"</li>
+                <li>Condividi l'ID stanza con chi vuoi che veda il tuo streaming</li>
+                <li>Clicca su "Inizia a Condividere Schermo" e seleziona cosa condividere</li>
+                <li>Per vedere lo streaming di qualcun altro, inserisci l'ID stanza che ti è stato condiviso e clicca "Unisciti"</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Includi prima socket.io per la segnalazione -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
+    
+    <!-- Poi il nostro script -->
+    <script src="app.js"></script>
+</body>
+</html>
